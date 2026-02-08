@@ -62,6 +62,8 @@ QQ 持久化数据路径：/app/.config/QQ
 
 NapCat 配置文件路径: /app/napcat/config
 
+NapCat 插件目录路径: /app/napcat/plugins
+
 # 登录
 
 登录 WebUI 地址：http://<宿主机ip>:6099/webui
