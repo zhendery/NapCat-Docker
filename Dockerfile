@@ -5,9 +5,10 @@ RUN useradd --no-log-init -d /app napcat
 WORKDIR /app
 
 COPY NapCat.Shell.zip entrypoint.sh templates /app/
-# 安装Linux QQ，官网链接 https://im.qq.com/index/#/linux
-RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) && \
-    curl -o linuxqq.deb https://qqdl.gtimg.cn/qqfile/QQNTV2/9.9.35/release/1763096b/QQ_3.2.33_260902_${arch}_01.deb && \
+# 安装Linux QQ
+COPY linuxqq.deb .
+# RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) && \
+RUN \
     dpkg -i --force-depends linuxqq.deb && rm linuxqq.deb && \
     chmod +x entrypoint.sh && \
     echo "(async () => {await import('file:///app/napcat/napcat.mjs');})();" > /opt/QQ/resources/app/loadNapCat.js && \
